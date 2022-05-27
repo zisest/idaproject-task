@@ -1,8 +1,15 @@
 <script>
 import { maska } from 'maska'
 
+const MASKS = {
+  SPACE_SEPARATED_NUMBER: {
+    mask: 'N## ### ###',
+    tokens: { N: { pattern: /[1-9]/ } },
+  },
+}
+
 export default {
-  props: ['value', 'required', 'label', 'placeholder', 'name', 'mask'],
+  props: ['value', 'required', 'label', 'placeholder', 'name', 'maskType'],
   directives: {
     maska,
   },
@@ -16,6 +23,9 @@ export default {
       const newValue = this.required ? !!this.value : true
       this.$emit('validityChange', this.name, newValue)
       return newValue
+    },
+    mask() {
+      return MASKS[this.maskType]
     },
   },
   methods: {},

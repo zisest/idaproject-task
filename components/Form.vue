@@ -68,7 +68,7 @@ export default {
       name="price"
       label="Цена товара"
       placeholder="Введите цену"
-      mask="### ### ###"
+      maskType="SPACE_SEPARATED_NUMBER"
       @validityChange="handleValidity"
     />
     <input type="submit" value="Добавить товар" :disabled="!isValid" />
