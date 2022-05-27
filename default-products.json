@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "A Product",
+    "description": "Description",
+    "image": "https://github.com/zisest.png",
+    "price": 2000
+  },
+  {
+    "id": 2,
+    "name": "B Product",
+    "description": "Description",
+    "image": "https://github.com/zisest.png",
+    "price": 1105
+  },
+  {
+    "id": 3,
+    "name": "C Product",
+    "description": "Description",
+    "image": "https://github.com/zisest.png",
+    "price": 500
+  }
+]

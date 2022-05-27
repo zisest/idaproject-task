@@ -13,6 +13,7 @@
     "sass": "^1.52.1"
   },
   "dependencies": {
-    "maska": "^1.5.0"
+    "maska": "^1.5.0",
+    "nanoid": "^3.3.4"
   }
 }

@@ -28,15 +28,22 @@ export default {
       this.validity[fieldName] = isValid
     },
     handleSubmit() {
-      const { name, description, link, price } = this
+      const { name, description, image, price } = this
+      this.$emit('submit', {
+        name,
+        description,
+        image,
+        price: price.replaceAll(' ', ''),
+      })
     },
   },
+  emits: ['submit'],
 }
 </script>
 
 <template>
   <div>is form valid: {{ isValid }}</div>
-  <div>{{ { name, description, link, price } }}</div>
+  <div>{{ { name, description, image, price } }}</div>
   <form @submit.prevent="handleSubmit">
     <TextInput
       :required="true"
@@ -48,6 +55,7 @@ export default {
     />
     <!-- TODO: add maxLength to the description field -->
     <TextInput
+      :textarea="true"
       name="description"
       v-model:value="description"
       label="Описание товара"

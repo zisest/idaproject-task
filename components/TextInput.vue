@@ -18,7 +18,15 @@ const MASKS = {
 }
 
 export default {
-  props: ['value', 'required', 'label', 'placeholder', 'name', 'maskType'],
+  props: [
+    'value',
+    'required',
+    'label',
+    'placeholder',
+    'name',
+    'maskType',
+    'textarea',
+  ],
   directives: {
     maska,
   },
@@ -53,6 +61,7 @@ export default {
     <span>{{ value }}</span>
 
     <input
+      v-if="!textarea"
       type="text"
       :value="value"
       @input="handleInput"
@@ -61,6 +70,15 @@ export default {
       :required="required"
       :placeholder="placeholder"
     />
+    <textarea
+      v-else
+      :value="value"
+      @input="handleInput"
+      v-maska="mask"
+      :name="name"
+      :required="required"
+      :placeholder="placeholder"
+    ></textarea>
   </label>
   {{ { required } }} {{ { isDirty } }} {{ { isValid } }}
 </template>
