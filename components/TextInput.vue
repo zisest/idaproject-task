@@ -3,7 +3,16 @@ import { maska } from 'maska'
 
 const MASKS = {
   SPACE_SEPARATED_NUMBER: {
-    mask: ['N', 'N##', 'N ###', 'N# ###', 'N## ###', 'N ### ###', 'N# ### ###', 'N## ### ###'],
+    mask: [
+      'N',
+      'N##',
+      'N ###',
+      'N# ###',
+      'N## ###',
+      'N ### ###',
+      'N# ### ###',
+      'N## ### ###',
+    ],
     tokens: { N: { pattern: /[1-9]/ } },
   },
 }
@@ -28,7 +37,12 @@ export default {
       return MASKS[this.maskType]
     },
   },
-  methods: {},
+  methods: {
+    handleInput(e) {
+      this.isDirty = true
+      this.$emit('update:value', e.target.value)
+    },
+  },
   emits: ['validityChange', 'update:value', 'input'],
 }
 </script>
@@ -41,7 +55,7 @@ export default {
     <input
       type="text"
       :value="value"
-      @input="$emit('update:value', $event.target.value)"
+      @input="handleInput"
       v-maska="mask"
       :name="name"
       :required="required"
