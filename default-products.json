@@ -19,5 +19,19 @@
     "description": "Description",
     "image": "https://github.com/zisest.png",
     "price": 500
+  },
+  {
+    "id": 4,
+    "name": "C Pfrroduct",
+    "description": "Description",
+    "image": "https://github.com/zisest.png",
+    "price": 1900
+  },
+  {
+    "id": 5,
+    "name": "C Profrfrduct",
+    "description": "Description",
+    "image": "https://github.com/zisest.png",
+    "price": 250
   }
 ]

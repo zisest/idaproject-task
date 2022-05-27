@@ -17,7 +17,8 @@ export default {
     sortedProducts() {
       const sortingFunction = SORTING_FUNCTIONS[this.order]
       if (!sortingFunction) return this.products
-      return this.products.sort(sortingFunction)
+      const sorted = [...this.products].sort(sortingFunction)
+      return sorted
     },
   },
   emits: ['deleteProduct'],
@@ -33,15 +34,35 @@ export default {
       <option value="PRICE_ASC">По возрастанию цены</option>
       <option value="PRICE_DESC">По убыванию цены</option>
     </select>
-    <Product
-      v-for="product in sortedProducts"
-      :key="product.id"
-      :id="product.id"
-      :name="product.name"
-      :description="product.description"
-      :image="product.image"
-      :price="product.price"
-      @deleteProduct="$emit('deleteProduct', $event)"
-    />
+    <TransitionGroup name="products">
+      <Product
+        v-for="product in sortedProducts"
+        :key="product.id"
+        :id="product.id"
+        :name="product.name"
+        :description="product.description"
+        :image="product.image"
+        :price="product.price"
+        @deleteProduct="$emit('deleteProduct', $event)"
+      />
+    </TransitionGroup>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.products-move,
+.products-enter-active,
+.products-leave-active {
+  transition: all 0.5s ease;
+}
+
+.products-enter-from,
+.products-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.products-leave-active {
+  position: absolute;
+}
+</style>
