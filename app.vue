@@ -6,6 +6,6 @@ export default {
 
 <template>
   <div>
-  
+    <Form />
   </div>
 </template>

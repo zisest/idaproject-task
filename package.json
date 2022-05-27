@@ -11,5 +11,8 @@
     "nuxt": "3.0.0-rc.3",
     "prettier": "^2.6.2",
     "sass": "^1.52.1"
+  },
+  "dependencies": {
+    "maska": "^1.5.0"
   }
 }
