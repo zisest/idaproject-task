@@ -3,7 +3,7 @@ import { maska } from 'maska'
 
 const MASKS = {
   SPACE_SEPARATED_NUMBER: {
-    mask: 'N## ### ###',
+    mask: ['N', 'N##', 'N ###', 'N# ###', 'N## ###', 'N ### ###', 'N# ### ###', 'N## ### ###'],
     tokens: { N: { pattern: /[1-9]/ } },
   },
 }
