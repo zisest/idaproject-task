@@ -17,9 +17,10 @@ function initialState() {
       name: false,
       description: false,
       image: false,
-      price: false
+      price: false,
     },
     isValid: false,
+    recentlySubmitted: false,
   }
 }
 
@@ -38,15 +39,24 @@ export default {
     handleValidity(fieldName, isValid) {
       this.validity[fieldName] = isValid
     },
-    handleSubmit() {
+    async sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms))
+    },
+    async animateSubmitButton() {
+      await this.sleep(0)
+      this.recentlySubmitted = true
+      await this.sleep(2000)
+      this.recentlySubmitted = false
+    },
+    async handleSubmit() {
       const { name, description, image, price } = this
       this.$emit('submit', {
-        name,
-        description,
-        image,
+        name: name.trim(),
+        description: description.trim(),
+        image: image.trim(),
         price: price.replaceAll(' ', ''),
       })
-
+      await this.animateSubmitButton()
       Object.assign(this.$data, initialState())
     },
   },
@@ -95,8 +105,8 @@ export default {
       v-model:isDirty="dirty.price"
     />
     <Button
-      class="submit"
-      label="Добавить товар"
+      :class="['submit', { submitted: recentlySubmitted }]"
+      :label="recentlySubmitted ? 'Товар добавлен' : 'Добавить товар'"
       :submit="true"
       :disabled="!isValid"
     />
@@ -119,5 +129,10 @@ export default {
 
 .submit {
   margin-top: var(--8pt);
+  transition: 800ms;
+
+  &.submitted {
+    background: var(--success);
+  }
 }
 </style>

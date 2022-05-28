@@ -33,5 +33,12 @@
     "description": "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
     "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=420&q=60",
     "price": 250
+  },
+  {
+    "id": 6,
+    "name": "Обезьянка",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "https://media.nature.com/lw800/magazine-assets/d41586-019-00938-9/d41586-019-00938-9_16560868.jpg",
+    "price": 1
   }
 ]

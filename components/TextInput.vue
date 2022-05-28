@@ -18,7 +18,7 @@ const MASKS = {
   URL: {
     mask: 'https://V*',
     tokens: {
-      V: { pattern: /[@"^\-\]_.\~!*'();:@&=+$,/?%#A-z0-9]/ }
+      V: { pattern: /[@"^\-\]_.\~!*'();:@&=+$,/?%#A-z0-9]/ },
     },
   },
 }
@@ -71,6 +71,7 @@ export default {
         :name="name"
         :required="required"
         :placeholder="placeholder"
+        :inputmode="maskType === 'SPACE_SEPARATED_NUMBER' ? 'numeric' : null"
       />
       <textarea
         :class="['textarea', { invalid: !isValid && isDirty }]"

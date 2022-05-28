@@ -68,7 +68,6 @@ export default {
   padding: var(--24pt) var(--32pt);
   display: flex;
   gap: var(--16pt);
-  justify-content: space-evenly;
 
   min-height: 100%;
 
@@ -76,6 +75,8 @@ export default {
 
   @media (min-width: $break-md) {
     flex-direction: row;
+  justify-content: space-evenly;
+
   }
 }
 
@@ -91,6 +92,7 @@ h1 {
 
 }
 .left-section {
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   gap: var(--16pt);

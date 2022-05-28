@@ -11,7 +11,6 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
 .delete {
   opacity: 0;
   position: absolute;

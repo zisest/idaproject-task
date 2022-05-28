@@ -7,6 +7,7 @@ export default {
 
 <template>
   <label class="label-el">
+    <!-- Usually I do a custom select dropdown but this time I didn't (: -->
     <select
       class="select"
       @input="$emit('update:selected', $event.target.value)"
@@ -50,8 +51,6 @@ export default {
   color: var(--text-gray);
   line-height: var(--16pt);
 
- 
-
   img {
     width: var(--16pt);
     height: var(--16pt);
@@ -72,7 +71,4 @@ export default {
     box-shadow: var(--shadow-input-hover);
   }
 }
-// .option {
-// width: 100%;
-// }
 </style>
