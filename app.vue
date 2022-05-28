@@ -49,6 +49,10 @@ export default {
 </script>
 
 <template>
+  <Head>
+    <Title>idaproject task</Title>
+    <Link rel="icon" href="favicon.png" />
+  </Head>
   <div class="app">
     <div class="left-section">
       <h1>Добавление товара</h1>
@@ -75,8 +79,7 @@ export default {
 
   @media (min-width: $break-md) {
     flex-direction: row;
-  justify-content: space-evenly;
-
+    justify-content: space-evenly;
   }
 }
 
@@ -89,7 +92,6 @@ h1 {
 .form {
   position: sticky;
   top: var(--24pt);
-
 }
 .left-section {
   min-height: 100%;
