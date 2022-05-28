@@ -6,15 +6,13 @@ export default defineNuxtConfig({
     '@/assets/styles/reset.scss',
     '@/assets/styles/variables.scss',
     '@/assets/styles/globals.scss',
-    '@/assets/styles/breakpoints.scss'
-
+    '@/assets/styles/breakpoints.scss',
   ],
-  modules: [
-    '@nuxtjs/google-fonts',
-  ],
+  modules: ['@nuxtjs/google-fonts'],
   googleFonts: {
     families: {
-      'Source+Sans+Pro': [400, 600]
-    }
-  }
+      'Source+Sans+Pro': [400, 600],
+    },
+  },
+  ssr: false,
 })
