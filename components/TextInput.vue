@@ -1,6 +1,6 @@
 <script>
 import { maska } from 'maska'
-
+// definitely, not the best approach to masking :)
 const MASKS = {
   SPACE_SEPARATED_NUMBER: {
     mask: [
@@ -15,6 +15,12 @@ const MASKS = {
     ],
     tokens: { N: { pattern: /[1-9]/ } },
   },
+  URL: {
+    mask: 'https://V*',
+    tokens: {
+      V: { pattern: /[@"^\-\]_.\~!*'();:@&=+$,/?%#A-z0-9]/ }
+    },
+  },
 }
 
 export default {
@@ -26,14 +32,10 @@ export default {
     'name',
     'maskType',
     'textarea',
+    'isDirty',
   ],
   directives: {
     maska,
-  },
-  data() {
-    return {
-      isDirty: false,
-    }
   },
   computed: {
     isValid() {
@@ -47,11 +49,11 @@ export default {
   },
   methods: {
     handleInput(e) {
-      this.isDirty = true
+      this.$emit('update:isDirty', true)
       this.$emit('update:value', e.target.value)
     },
   },
-  emits: ['validityChange', 'update:value', 'input'],
+  emits: ['validityChange', 'update:value', 'update:isDirty'],
 }
 </script>
 
@@ -129,7 +131,10 @@ export default {
 
   box-shadow: var(--shadow-input);
   background: var(--bg-primary);
-  color: var(--text-gray);
+  color: var(--text-primary);
+  &::placeholder {
+    color: var(--text-gray);
+  }
 
   transition: 300ms;
 
@@ -143,7 +148,8 @@ export default {
   &.invalid {
     box-shadow: var(--shadow-input-error);
     border-color: var(--accent);
-    &:focus, &:hover {
+    &:focus,
+    &:hover {
       box-shadow: var(--shadow-input-error-focus);
     }
   }

@@ -52,7 +52,13 @@ export default {
 
 <template>
   <div class="container">
-    <Select :selectedLabel="sortingOrder" :options="sortingOptions" v-model:selected="order" />
+    <div class="select-wrapper">
+      <Select
+        :selectedLabel="sortingOrder"
+        :options="sortingOptions"
+        v-model:selected="order"
+      />
+    </div>
     <div class="products">
       <TransitionGroup name="products">
         <Product
@@ -74,13 +80,16 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--24pt);
+  gap: var(--16pt);
 }
-
+.select-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
 .products {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--16pt)
+  gap: var(--16pt);
 }
 
 .products-move,
@@ -98,5 +107,4 @@ export default {
 .products-leave-active {
   position: absolute;
 }
-
 </style>

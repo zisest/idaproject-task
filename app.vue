@@ -10,7 +10,7 @@ export default {
     console.log('app -> data()')
 
     return {
-      products: []
+      products: [],
     }
   },
   methods: {
@@ -50,18 +50,57 @@ export default {
 
 <template>
   <div class="app">
-    <Form @submit="addProduct" />
-    <Products :products="products" @deleteProduct="deleteProduct" />
+    <div class="left-section">
+      <h1>Добавление товара</h1>
+      <Form @submit="addProduct" />
+    </div>
+    <div class="products">
+      <Products :products="products" @deleteProduct="deleteProduct" />
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
+
 .app {
   background: var(--bg-page);
-  padding: var(--40pt);
+  padding: var(--24pt) var(--32pt);
   display: flex;
   gap: var(--16pt);
+  justify-content: space-evenly;
 
   min-height: 100%;
+
+  flex-direction: column;
+
+  @media (min-width: $break-md) {
+    flex-direction: row;
+  }
+}
+
+h1 {
+  line-height: var(--36pt);
+  font-size: var(--28pt);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.form {
+  position: sticky;
+  top: var(--24pt);
+
+}
+.left-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--16pt);
+
+  flex-basis: 50%;
+  @media (min-width: $break-lg) {
+    max-width: var(--332pt);
+  }
+}
+.products {
+  flex-basis: 75%;
 }
 </style>

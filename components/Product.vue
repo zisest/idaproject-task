@@ -29,9 +29,11 @@ export default {
 
 
 <style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
+
 .product {
-  width: var(--332pt);
   height: var(--420pt);
+  flex-basis: 100%;
 
   border-radius: var(--4pt);
 
@@ -50,6 +52,13 @@ export default {
     & > .delete {
       opacity: 1;
     }
+  }
+
+  @media (min-width: $break-sm) {
+    max-width: calc(50% - var(--8pt));
+  }
+  @media (min-width: $break-lg) {
+    max-width: var(--332pt);
   }
 }
 
@@ -75,6 +84,10 @@ export default {
   line-height: var(--24pt);
   font-weight: 600;
   padding-bottom: var(--16pt);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .description {
