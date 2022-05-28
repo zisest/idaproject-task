@@ -1,10 +1,24 @@
 <script>
 const SORTING_FUNCTIONS = {
-  DEFAULT: null,
-  ALPHABET: (a, b) => a.name.localeCompare(b.name),
-  PRICE_ASC: (a, b) => a.price - b.price,
-  PRICE_DESC: (a, b) => b.price - a.price,
+  DEFAULT: {
+    fn: null,
+    displayName: 'По умолчанию',
+  },
+  ALPHABET: {
+    fn: (a, b) => a.name.localeCompare(b.name),
+    displayName: 'По алфавиту',
+  },
+  PRICE_ASC: {
+    fn: (a, b) => a.price - b.price,
+    displayName: 'По возрастанию цены',
+  },
+  PRICE_DESC: {
+    fn: (a, b) => b.price - a.price,
+    displayName: 'По убыванию цены',
+  },
 }
+
+const ORDERING_TYPES = {}
 
 export default {
   props: ['products'],
@@ -15,10 +29,21 @@ export default {
   },
   computed: {
     sortedProducts() {
-      const sortingFunction = SORTING_FUNCTIONS[this.order]
+      const sortingFunction = SORTING_FUNCTIONS[this.order].fn
       if (!sortingFunction) return this.products
       const sorted = [...this.products].sort(sortingFunction)
       return sorted
+    },
+    sortingOptions() {
+      return Object.entries(SORTING_FUNCTIONS).map(
+        ([value, { displayName }]) => ({
+          value,
+          displayName,
+        })
+      )
+    },
+    sortingOrder() {
+      return SORTING_FUNCTIONS[this.order].displayName
     },
   },
   emits: ['deleteProduct'],
@@ -27,29 +52,44 @@ export default {
 
 <template>
   <div>
-    {{ order }}
-    <select v-model="order">
-      <option value="DEFAULT">По умолчанию</option>
-      <option value="ALPHABET">По алфавиту</option>
-      <option value="PRICE_ASC">По возрастанию цены</option>
-      <option value="PRICE_DESC">По убыванию цены</option>
-    </select>
-    <TransitionGroup name="products">
-      <Product
-        v-for="product in sortedProducts"
-        :key="product.id"
-        :id="product.id"
-        :name="product.name"
-        :description="product.description"
-        :image="product.image"
-        :price="product.price"
-        @deleteProduct="$emit('deleteProduct', $event)"
-      />
-    </TransitionGroup>
+    <label>
+      <span>{{ sortingOrder }}</span>
+      <select v-model="order">
+        <option
+          v-for="option in sortingOptions"
+          :value="option.value"
+          :key="option.value"
+        >
+          {{ option.displayName }}
+        </option>
+      </select>
+    </label>
+    <div class="products">
+      <TransitionGroup name="products">
+        <Product
+          v-for="product in sortedProducts"
+          :key="product.id"
+          :id="product.id"
+          :name="product.name"
+          :description="product.description"
+          :image="product.image"
+          :price="product.price"
+          @deleteProduct="$emit('deleteProduct', $event)"
+        />
+      </TransitionGroup>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+.products > div {
+  flex-basis: 30%;
+}
+
 .products-move,
 .products-enter-active,
 .products-leave-active {
@@ -64,5 +104,18 @@ export default {
 
 .products-leave-active {
   position: absolute;
+}
+
+label {
+  display: block;
+  width: 10rem;
+  height: 2rem;
+  border: 1px solid;
+  position: relative;
+}
+select {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
 }
 </style>

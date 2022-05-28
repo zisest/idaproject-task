@@ -1,5 +1,7 @@
 <script>
+import Button from './Button.vue'
 export default {
+  components: { Button },
   data() {
     return {
       name: '',
@@ -42,9 +44,7 @@ export default {
 </script>
 
 <template>
-  <div>is form valid: {{ isValid }}</div>
-  <div>{{ { name, description, image, price } }}</div>
-  <form @submit.prevent="handleSubmit">
+  <form class="form" @submit.prevent="handleSubmit">
     <TextInput
       :required="true"
       name="name"
@@ -79,10 +79,25 @@ export default {
       maskType="SPACE_SEPARATED_NUMBER"
       @validityChange="handleValidity"
     />
-    <input type="submit" value="Добавить товар" :disabled="!isValid" />
+    <Button class="submit" label="Добавить товар" :submit="true" :disabled="!isValid" />
   </form>
 </template>
 
 
 <style lang="scss" scoped>
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--2pt);
+  padding: var(--24pt);
+  background: var(--bg-primary);
+  border-radius: var(--4pt);
+  box-shadow: var(--shadow-card);
+
+  flex-basis: 25%;
+}
+
+.submit {
+  margin-top: var(--8pt);
+}
 </style>

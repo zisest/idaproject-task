@@ -43,8 +43,17 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="app">
     <Form @submit="addProduct" />
     <Products :products="products" @deleteProduct="deleteProduct" />
   </div>
 </template>
+
+<style lang="scss" scoped>
+.app {
+  background: var(--bg-page);
+  padding: var(--40pt);
+  display: flex;
+  gap: var(--16pt);
+}
+</style>
