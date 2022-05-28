@@ -1,23 +1,26 @@
 @function toRem($value) {
-  $remValue: calc($value / 16) + rem; 
+  $remValue: calc($value / 16) + rem;
   @return $remValue;
 }
 
-$units: 420, 332, 108, 52, 40, 36, 32, 28, 24, 20, 16, 12, 10, 8, 4, 2;
+$units: 420, 332, 200, 108, 100, 52, 40, 36, 32, 28, 24, 20, 16, 12, 10, 8, 4, 2;
 
-:root{
-  --bg-page: #FAF9F7;
+:root {
+  --bg-page: #faf9f7;
 
-  --bg-primary: #FFFEFB;
+  --bg-primary: #fffefb;
   --green: #7bae73;
-  --bg-button-disabled: #EEEEEE;
-  --accent: #FF8484;
+  --bg-button-disabled: #eeeeee;
+  --accent: #ff8484;
 
-  --text-primary: #3F3F3F;
-  --text-dark-blue: #49485E;
-  --text-gray: #B4B4B4;
+  --text-primary: #3f3f3f;
+  --text-dark-blue: #49485e;
+  --text-gray: #b4b4b4;
 
-  --shadow-card: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
+  --shadow-card: 0px 20px 30px rgba(0, 0, 0, 0.04),
+    0px 6px 10px rgba(0, 0, 0, 0.02);
+  --shadow-card-hover: 0px 24px 36px rgba(0, 0, 0, 0.06),
+    0px 8px 12px rgba(0, 0, 0, 0.04);
 
   $smaller-shadow: 0px 2px 5px;
   $larger-shadow: 0px 3px 5px;
@@ -31,11 +34,10 @@ $units: 420, 332, 108, 52, 40, 36, 32, 28, 24, 20, 16, 12, 10, 8, 4, 2;
   --shadow-input-error: #{$smaller-shadow} #{$shadow-red};
   --shadow-input-error-focus: #{$larger-shadow} #{$shadow-red-15};
 
-
   --shadow-button: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-button-focus: 0px 3px 5px rgba(185, 20, 20, 0.3);
 
   @each $unit in $units {
     --#{$unit}pt: #{toRem(#{$unit})};
   }
-  
 }

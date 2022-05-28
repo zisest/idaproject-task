@@ -3,26 +3,32 @@ import { nanoid } from 'nanoid'
 import DEFAULT_PRODUCTS from './default-products.json'
 
 export default {
+  mounted() {
+    this.products = this.getProducts()
+  },
   data() {
     console.log('app -> data()')
-    let products = localStorage.getItem('PRODUCTS')
-    if (products) {
-      try {
-        products = JSON.parse(products)
-      } catch {
-        products = DEFAULT_PRODUCTS
-        localStorage.setItem('PRODUCTS', JSON.stringify(products))
-      }
-    } else {
-      products = DEFAULT_PRODUCTS
-      localStorage.setItem('PRODUCTS', JSON.stringify(products))
-    }
 
     return {
-      products,
+      products: []
     }
   },
   methods: {
+    getProducts() {
+      let products = localStorage.getItem('PRODUCTS')
+      if (products) {
+        try {
+          products = JSON.parse(products)
+        } catch {
+          products = DEFAULT_PRODUCTS
+          localStorage.setItem('PRODUCTS', JSON.stringify(products))
+        }
+      } else {
+        products = DEFAULT_PRODUCTS
+        localStorage.setItem('PRODUCTS', JSON.stringify(products))
+      }
+      return products
+    },
     addProduct({ name, description, image, price }) {
       console.log({ name, description, image, price })
       const newProducts = [
@@ -55,5 +61,7 @@ export default {
   padding: var(--40pt);
   display: flex;
   gap: var(--16pt);
+
+  min-height: 100%;
 }
 </style>

@@ -51,19 +51,8 @@ export default {
 </script>
 
 <template>
-  <div>
-    <label>
-      <span>{{ sortingOrder }}</span>
-      <select v-model="order">
-        <option
-          v-for="option in sortingOptions"
-          :value="option.value"
-          :key="option.value"
-        >
-          {{ option.displayName }}
-        </option>
-      </select>
-    </label>
+  <div class="container">
+    <Select :selectedLabel="sortingOrder" :options="sortingOptions" v-model:selected="order" />
     <div class="products">
       <TransitionGroup name="products">
         <Product
@@ -82,12 +71,16 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--24pt);
+}
+
 .products {
   display: flex;
   flex-wrap: wrap;
-}
-.products > div {
-  flex-basis: 30%;
+  gap: var(--16pt)
 }
 
 .products-move,
@@ -106,16 +99,4 @@ export default {
   position: absolute;
 }
 
-label {
-  display: block;
-  width: 10rem;
-  height: 2rem;
-  border: 1px solid;
-  position: relative;
-}
-select {
-  opacity: 0;
-  position: absolute;
-  inset: 0;
-}
 </style>

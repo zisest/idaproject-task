@@ -20,7 +20,8 @@
   3. Allow percentage-based heights in the application
 */
 html,
-body {
+body,
+#__nuxt {
   height: 100%;
 }
 /*
@@ -68,6 +69,7 @@ h6 {
 /*
   9. Remove outline from input elements
 */
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
 }

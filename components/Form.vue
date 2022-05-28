@@ -95,6 +95,7 @@ export default {
   box-shadow: var(--shadow-card);
 
   flex-basis: 25%;
+  height: fit-content;
 }
 
 .submit {

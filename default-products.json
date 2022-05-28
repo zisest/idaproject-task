@@ -1,37 +1,37 @@
 [
   {
     "id": 1,
-    "name": "A Product",
-    "description": "Description",
-    "image": "https://github.com/zisest.png",
+    "name": "Первый товар",
+    "description": "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+    "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=420&q=60",
     "price": 2000
   },
   {
     "id": 2,
-    "name": "B Product",
-    "description": "Description",
-    "image": "https://github.com/zisest.png",
+    "name": "Второй товар",
+    "description": "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+    "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=420&q=60",
     "price": 1105
   },
   {
     "id": 3,
-    "name": "C Product",
-    "description": "Description",
-    "image": "https://github.com/zisest.png",
+    "name": "Третий товар",
+    "description": "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+    "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=420&q=60",
     "price": 500
   },
   {
     "id": 4,
-    "name": "C Pfrroduct",
-    "description": "Description",
-    "image": "https://github.com/zisest.png",
+    "name": "Четвертый товар",
+    "description": "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк. А здесь описание еще более длинное и может даже выходить за пределы контейнера.",
+    "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=420&q=60",
     "price": 1900
   },
   {
     "id": 5,
-    "name": "C Profrfrduct",
-    "description": "Description",
-    "image": "https://github.com/zisest.png",
+    "name": "Пятый товар",
+    "description": "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
+    "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=420&q=60",
     "price": 250
   }
 ]

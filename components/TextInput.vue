@@ -118,7 +118,6 @@ export default {
 
     position: absolute;
     top: 0;
-    right: -var(--4pt);
   }
 }
 
